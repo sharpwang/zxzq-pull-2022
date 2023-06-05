@@ -70,12 +70,13 @@ def download_files(id, file_path):
                 [url],
                 {
                     'out': file['fjname'],
-                    'dir': file_path,
-                    'rpc-secret': 'abcd12345678',
+                    'dir': file_path
                 }
-            ]
+            ],
+            'headers': {
+                "referer": 'https://www.chinabond.com.cn/dfz/',
+            }
         }
-
         # 发送 JSON-RPC 包给 Aria2
         headers = {'Content-Type': 'application/json'}
         response = requests.post('http://localhost:6800/jsonrpc', data=json.dumps(params), headers=headers)
